@@ -25,3 +25,11 @@ If the test suite passes, you'll be ready to run the app in a local server:
 ```
 $ rails server
 ```
+
+Automated tests with Guard
+
+Use Guard to automate the running of the tests.
+
+```
+$ bundle exec guard
+```
