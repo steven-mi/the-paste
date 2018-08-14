@@ -15,4 +15,5 @@
 //= require popper
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require material
 //= require_tree .

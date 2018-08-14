@@ -39,6 +39,10 @@ gem 'bootstrap', '~> 4.1', '>= 4.1.3'
 gem 'autoprefixer-rails'
 # jquery-rails
 gem 'jquery-rails'
+# materials-sass
+gem 'material-sass', '~> 4.1.1'
+# Material Design Icons
+gem 'material_icons'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
