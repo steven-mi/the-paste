@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Bootstrap 4 ruby gem
-gem 'bootstrap', '~> 4.1', '>= 4.1.3'
+gem 'bootstrap', '~> 4.1.1'
 # Autoprefixer is a tool to parse CSS and add vendor prefixes to CSS
 gem 'autoprefixer-rails'
 # jquery-rails
