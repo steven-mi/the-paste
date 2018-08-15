@@ -1,15 +1,19 @@
 <div aria-hidden="true" class="navdrawer" id="navdrawerDefault" tabindex="-1">
   <div class="navdrawer-content">
     <div class="navdrawer-header">
-      <a class="navbar-brand px-0" href="#">the-paste</a>
+      <%= link_to 'the-paste', root_path, class: 'navbar-brand px-0' %>
     </div>
     <p class="navdrawer-subheader">Services</p>
     <ul class="navdrawer-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="material-icons mr-3">chat_bubble_outline</i> Projects</a>
+        <%= link_to home_path, :class => 'nav-link' do %>
+          <i class="material-icons mr-3">chat_bubble_outline</i> Projects
+        <% end %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="material-icons mr-3">help_outline</i> Help</a>
+        <%= link_to help_path, :class => 'nav-link' do %>
+          <i class="material-icons mr-3">help_outline</i> Help
+        <% end %>
       </li>
     </ul>
     <div class="navdrawer-divider"></div>
