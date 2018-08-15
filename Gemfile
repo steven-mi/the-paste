@@ -43,6 +43,8 @@ gem 'jquery-rails'
 gem 'material-sass', '~> 4.1.1'
 # Material Design Icons
 gem 'material_icons'
+# Authentication using Authlogic
+gem 'authlogic', '~> 4.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
