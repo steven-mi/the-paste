@@ -113,6 +113,8 @@ group :test do
   gem 'simplecov', require: false
   # Collection of testing matchers extracted from Shoulda
   gem 'shoulda-matchers'
+  # This gem brings back assigns to your controller tests as well as assert_template
+  gem 'rails-controller-testing'
 end
 
 group :production do
