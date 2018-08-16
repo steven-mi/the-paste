@@ -19,12 +19,24 @@
     <div class="navdrawer-divider"></div>
     <p class="navdrawer-subheader">Account Management</p>
     <ul class="navdrawer-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#"><i class="material-icons mr-3">person</i> Sign In</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><i class="material-icons mr-3">person_add</i> Sign Up</a>
-      </li>
+      <% if current_user %>
+        <li class="nav-item">
+          <%= link_to sign_out_path, method: :delete, :class => 'nav-link' do %>
+            <i class="material-icons mr-3">directions_walk</i> Sign out
+          <% end %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to sign_in_path, :class => 'nav-link' do %>
+            <i class="material-icons mr-3">person</i> Sign in
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to sign_up_path, :class => 'nav-link' do %>
+            <i class="material-icons mr-3">person_add</i> Sign up
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
