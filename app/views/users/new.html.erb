@@ -1,0 +1,11 @@
+<%= form_for @user do |f| %>
+<%= render 'shared/errors', object: @user %>
+<div class="card">
+    <div class="card-header">
+        Featured
+    </div>
+    <div class="card-body">
+        <%= render 'users/form' %>
+    </div>
+</div>
+<% end %>
