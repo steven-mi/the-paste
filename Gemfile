@@ -71,6 +71,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  # This gem brings back assigns to your controller tests as well as assert_template
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -115,8 +117,6 @@ group :test do
   gem 'simplecov', require: false
   # Collection of testing matchers extracted from Shoulda
   gem 'shoulda-matchers'
-  # This gem brings back assigns to your controller tests as well as assert_template
-  gem 'rails-controller-testing'
 end
 
 group :production do
