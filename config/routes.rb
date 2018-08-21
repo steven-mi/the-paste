@@ -42,6 +42,22 @@ Rails.application.routes.draw do
   
   get 'projects/create'
 
+  # post routes
+  
+  get 'posts/index'
+
+  get 'posts/show'
+
+  get 'posts/new'
+
+  get 'posts/create'
+
+  get 'posts/edit'
+
+  get 'posts/update'
+
+  get 'posts/destroy'
+
   # static pages routes
 
   get '/home', to: 'static_pages#home'
