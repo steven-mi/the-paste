@@ -7,3 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(email: 'josh@example.com', password: 'passw0rd', password_confirmation: 'passw0rd')
+
+Project.create(title: 'Kratos')
+Project.create(title: 'Zeus')
