@@ -45,6 +45,8 @@ gem 'material-sass', '~> 4.1.1'
 gem 'material_icons'
 # Authentication using Authlogic
 gem 'authlogic', '~> 4.3'
+# syntax-highlighting library
+gem 'rails-highlightjs'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

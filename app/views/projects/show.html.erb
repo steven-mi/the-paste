@@ -21,10 +21,12 @@
 <% @project.posts.reverse_each do |post| %>
     <div class="card">
       <div class="card-header">
-        <%= post.title %>
+        <blockquote class="blockquote text-right">
+          <%= post.title %> <cite title="Source Title"><footer class="blockquote-footer"><%= post.syntax %></cite></footer>
+        </blockquote>
       </div>
       <div class="card-body">
-        <pre><code><%= post.body %></code></pre>
+        <pre><code class="<%= post.syntax %>"><%= post.body %></code></pre>
       </div>
       <div class="card-footer text-muted text-right">
         <%= link_to 'View', project_post_path(@project, post), class: 'btn btn-outline-success btn-sm' %>
@@ -38,3 +40,4 @@
 <% end %>
 
 <%= link_to 'Back', projects_path() %>
+<br/>

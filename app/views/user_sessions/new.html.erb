@@ -1,7 +1,9 @@
 <%= render 'shared/errors', object: @user_session %>
 <div class="card">
     <div class="card-header">
-        Featured
+        <blockquote class="blockquote text-right">
+          Sign In <cite title="Source Title"><footer class="blockquote-footer">as</cite></footer>
+        </blockquote>
     </div>
     <div class="card-body">
         <%= render 'user_sessions/form' %>
