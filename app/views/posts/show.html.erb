@@ -2,10 +2,12 @@
 
 <div class="card">
     <div class="card-header">
-        <%= @post.title %>
+        <blockquote class="blockquote text-right">
+          <%= @post.title %> <cite title="Source Title"><footer class="blockquote-footer"><%= @post.syntax %></cite></footer>
+        </blockquote>
     </div>
     <div class="card-body">
-      <pre><code><%= @post.body %></code></pre>
+      <pre><code class="<%= @post.syntax %>"><%= @post.body %></code></pre>
     </div>
 </div>
 
