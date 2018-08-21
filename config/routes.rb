@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   resources :projects
 
+  resources :projects do
+    resources :posts
+  end
+
   # default route
   root 'static_pages#home'
 

@@ -1,2 +1,14 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<% provide(:title, @post.title) %>
+
+<div class="card">
+    <div class="card-header">
+        <%= @post.title %>
+    </div>
+    <div class="card-body">
+      <pre><code><%= @post.body %></code></pre>
+    </div>
+</div>
+
+ <br/>
+
+<%= link_to 'Back', project_path(@project) %>
