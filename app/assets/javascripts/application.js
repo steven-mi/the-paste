@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require material
+//= require highlight_pack
 //= require_tree .
