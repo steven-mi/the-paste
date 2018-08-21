@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   # default route
-  root 'static_pages#home'
+  root 'projects#index'
 
   # user session routes
 
