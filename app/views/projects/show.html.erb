@@ -1,0 +1,40 @@
+<% provide(:title, @project.title) %>
+
+<div class= "text-right">
+  <!-- Example split danger button -->
+  
+  <div class="btn-group">
+    <%= link_to "Paste", new_project_post_path(@project), :class => "btn btn-raised btn-sm" %>
+    <button type="button" class="btn btn-raised dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+      <%= link_to 'Delete', project_path(@project),
+               method: :delete,
+               data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %>
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<% @project.posts.reverse_each do |post| %>
+    <div class="card">
+      <div class="card-header">
+        <%= post.title %>
+      </div>
+      <div class="card-body">
+        <pre><code><%= post.body %></code></pre>
+      </div>
+      <div class="card-footer text-muted text-right">
+        <%= link_to 'View', project_post_path(@project, post), class: 'btn btn-outline-success btn-sm' %>
+        <%= link_to 'Edit', edit_project_post_path(@project, post), class: 'btn btn-outline-warning btn-sm' %></td>
+        <%= link_to 'Destroy', [post.project, post],
+               method: :delete,
+               data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm' %>
+      </div>
+    </div>
+    <br/>
+<% end %>
+
+<%= link_to 'Back', projects_path() %>

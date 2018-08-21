@@ -1,0 +1,14 @@
+<% provide(:title, @post.title) %>
+
+<div class="card">
+    <div class="card-header">
+        <%= @post.title %>
+    </div>
+    <div class="card-body">
+      <pre><code><%= @post.body %></code></pre>
+    </div>
+</div>
+
+ <br/>
+
+<%= link_to 'Back', project_path(@project) %>
