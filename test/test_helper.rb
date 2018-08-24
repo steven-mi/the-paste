@@ -20,5 +20,10 @@ module ActionDispatch
     fixtures :all
     include ApplicationHelper
     setup :activate_authlogic 
+
+    def login(user)
+      #post user_sessions_url, :params => { :email => user.email, :password => 'password' }
+      post sign_in_path, params: { session: { email => user.email, password: 'password' } }
+    end
   end
 end
