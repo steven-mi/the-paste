@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
+
+  load_and_authorize_resource class: 'UserSession'
+
   def new
     @user = User.new
   end
 
   def create
-    @user = User.new(users_params)
+    @user = User.new(user_params)
     if @user.save
       flash[:success] = "Account registered!"
       redirect_to root_path
@@ -33,7 +36,7 @@ class UsersController < ApplicationController
 
   private
 
-  def users_params
+  def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end
