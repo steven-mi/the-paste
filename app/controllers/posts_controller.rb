@@ -7,6 +7,16 @@ class PostsController < ApplicationController
 
   def show
     @post = @project.posts.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = PostPdf.new(@post)
+
+        send_data pdf.render, filename: "post_@{@post.id}.pdf",
+                  type: "application/pdf",
+                  disposition: "inline"
+      end
+    end
   end
 
   def new
@@ -28,9 +38,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to [@project, @post] }
+        format.html {redirect_to [@project, @post]}
       else
-        format.html { render action: "edit" }
+        format.html {render action: "edit"}
       end
     end
   end
@@ -43,7 +53,7 @@ class PostsController < ApplicationController
   end
 
   private
-  
+
   def post_params
     params.require(:post).permit(:title, :body, :syntax)
   end
