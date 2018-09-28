@@ -14,54 +14,6 @@ Rails.application.routes.draw do
   # default route
   root 'projects#index'
 
-  # user session routes
-
-  get 'user_sessions/new'
-
-  get 'user_sessions/create'
-
-  get 'user_sessions/destroy'
-
-  # user routes
-
-  get 'users/new'
-
-  get 'users/create'
-
-  get 'users/edit'
-
-  get 'users/show'
-
-  get 'users/update'
-
-  # project routes
-
-  get 'projects/index'
-
-  get 'projects/show'
-  
-  get 'projects/new'
-  
-  get 'projects/edit'
-  
-  get 'projects/create'
-
-  # post routes
-  
-  get 'posts/index'
-
-  get 'posts/show'
-
-  get 'posts/new'
-
-  get 'posts/create'
-
-  get 'posts/edit'
-
-  get 'posts/update'
-
-  get 'posts/destroy'
-
   # static pages routes
 
   get '/home', to: 'static_pages#home'
