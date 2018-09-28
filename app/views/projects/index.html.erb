@@ -3,25 +3,11 @@
 <div class="text-right">
   <% if can? :create, Project %>
     <div class="btn-group">
-      <%= link_to "Create", new_project_path, :class => "btn btn-raised btn-sm" %>
-      <button type="button" class="btn btn-raised dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Refresh</a>
-      </div>
+      <%= link_to "Create project", new_project_path, :class => "btn btn-raised btn-sm" %>
     </div>
   <% else %>
-    <div class="btn-group disabled">
-      <%= link_to "Create", new_project_path, :class => "btn btn-raised btn-sm disabled" %>
-      <button type="button" class="btn btn-raised dropdown-toggle dropdown-toggle-split disabled" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown-menu">
-        <%= link_to 'Refresh', root_path(), class: 'dropdown-item disabled' %>
-      </div>
-    </div>
-  <% end %>
+    <button type="button" class="btn btn-warning btn-sm disabled" disabled>Create project</button>
+<% end %>
 </div>
 
 <br/>
