@@ -55,6 +55,9 @@ gem 'cancancan', '~> 2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'prawn'
+gem 'prawn-table'
+
 group :development, :test do
 # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

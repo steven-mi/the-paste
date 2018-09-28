@@ -43,6 +43,7 @@
       <% else %>
         <button type="button" class="btn btn-outline btn-sm" disabled>Delete</button>
       <% end %>
+      <%= link_to 'PDF', project_post_path(@project, post, format: "pdf"), class: 'btn btn-outline-dark btn-sm' %>
     </div>
   </div>
   <br/>
