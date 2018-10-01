@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.all
+    @projects = Project.order('updated_at DESC')
   end
 
   def show
@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
- 
+
     if @project.update(project_params)
       redirect_to @project
     else
@@ -46,5 +46,5 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:title)
   end
-  
+
 end
