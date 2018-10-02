@@ -4,7 +4,16 @@ class ProjectsController < ApplicationController
   end
 
   def show
+
     @project = Project.find(params[:id])
+
+    p @project.password
+    p request.GET[:password]
+
+    if request.GET[:password] != @project.password
+      redirect_to root_path
+    end
+
   end
 
   def new
@@ -44,7 +53,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title)
+    params.require(:project).permit(:title, :password)
   end
   
 end
