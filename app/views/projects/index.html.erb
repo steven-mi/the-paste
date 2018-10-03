@@ -22,7 +22,7 @@
         <thead>
         </thead>
         <tbody>
-        <% @projects.reverse_each do |project| %>
+        <% @projects.each do |project| %>
           <tr>
             <td>
               <%= link_to project_path(project) do %>
