@@ -1,12 +1,13 @@
 class ProjectsController < ApplicationController
   def index
     @projects = Project.all
+    p "------------------INDEX------------------"
   end
 
   def show
 
     @project = Project.find(params[:id])
-
+    p "------------------SHOW------------------"
     p @project.password
     p request.GET[:password]
 

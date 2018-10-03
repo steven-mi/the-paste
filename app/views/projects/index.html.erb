@@ -27,9 +27,17 @@
             <td>
               <%= link_to project_path(project) do %>
                 <%= project.title %>
+                         
               <% end %>
               <br/>
               <small class="text-muted">Last updated <%= project.updated_at %></small>
+
+              <%= form_tag(project_path(project), method: "get") do %>
+                <%= label_tag(:q, "Password:") %>
+                <%= password_field_tag(:password) %>
+                <%= submit_tag("Join") %>
+              <% end %>
+             
             </td>
           </tr>
         <% end %>
