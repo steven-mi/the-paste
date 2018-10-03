@@ -1,2 +1,32 @@
-<h1>Projects#edit</h1>
-<p>Find me in app/views/projects/edit.html.erb</p>
+<% provide(:title, "Edit Project") %>
+
+<div class="card">
+  <div class="card-header">
+    Edit Project
+  </div>
+  <div class="card-body">
+    <%= form_for(@project) do |form| %>
+
+      <% if @project.errors.any? %>
+        <div id="error_explanation">
+          <%= pluralize(@project.errors.count, "error") %> prohibitedthis article from being saved:
+          <ul>
+            <% @project.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= form.label :title %><br>
+        <%= form.text_field :title, class: 'form-control', placeholder: "Enter title" %>
+      </div>
+      <p>
+        <button type="submit" class="btn btn-primary btn-block">Edit</button>
+      </p>
+    <% end %>
+  </div>
+</div>
+
+
