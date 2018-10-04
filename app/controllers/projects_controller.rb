@@ -4,7 +4,14 @@ class ProjectsController < ApplicationController
   end
 
   def show
+
     @project = Project.find(params[:id])
+
+    if request.GET[:password] != @project.password
+      flash[:dark] = "Wrong password. Try it again."
+      redirect_to root_path
+    end
+
   end
 
   def new
@@ -16,8 +23,13 @@ class ProjectsController < ApplicationController
   end
 
   def create
+   
+    if project_params[:password]==""
+      @project = Project.new( {title: project_params[:title],password: nil})
+    
+  else 
     @project = Project.new(project_params)
-
+  end
     if @project.save
       redirect_to @project
     else
@@ -44,7 +56,9 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title)
+
+      params.require(:project).permit(:title, :password)
+    
   end
 
 end

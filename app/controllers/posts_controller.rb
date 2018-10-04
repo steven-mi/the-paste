@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @post = @project.posts.find(params[:id])
+
     respond_to do |format|
       format.html
       format.pdf do
@@ -28,7 +29,7 @@ class PostsController < ApplicationController
     @project = Project.find(params[:project_id])
     update_timestamp
     @post = @project.posts.create(post_params)
-    redirect_to project_path(@project)
+    redirect_to controller: "projects", action: "show", id: @project, password: @project.password
   end
 
   def edit
