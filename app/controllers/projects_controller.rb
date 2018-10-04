@@ -1,6 +1,15 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.order('updated_at DESC')
+    if params[:filter]
+      
+      @projects = Project.where('title LIKE ?', "%#{params[:filter]}%").order('updated_at DESC')
+      if @projects.length==0
+        flash[:dark] = "No project found"
+        redirect_to root_path
+      end
+    else
+      @projects = Project.order('updated_at DESC')
+    end
   end
 
   def show
