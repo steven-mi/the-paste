@@ -27,15 +27,17 @@
             <td>
               <%= link_to project_path(project) do %>
                 <%= project.title %>
-                         
+                <% if !project.password.nil? %> <span class="badge badge-secondary">Private</span> <% end %>         
               <% end %>
+              
               <br/>
               <small class="text-muted">Last updated <%= project.updated_at %></small>
 
-              <%= form_tag(project_path(project), method: "get") do %>
-                <%= label_tag(:q, "Password:") %>
-                <%= password_field_tag(:password) %>
-                <%= submit_tag("Join") %>
+              <% if !project.password.nil? %>  
+                <%= form_tag(project_path(project), method: "get") do %>
+                  <%= password_field_tag(:password) %>
+                  <%= submit_tag("Join") %>
+                <% end %>
               <% end %>
              
             </td>
