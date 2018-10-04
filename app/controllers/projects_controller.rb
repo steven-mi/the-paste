@@ -1,17 +1,11 @@
 class ProjectsController < ApplicationController
   def index
     @projects = Project.all
-    p "------------------INDEX------------------"
   end
 
   def show
 
     @project = Project.find(params[:id])
-    p "------------------SHOW------------------"
-    p "Database:" 
-    p @project.password
-    p "Input:" 
-    p request.GET[:password]
 
     if request.GET[:password] != @project.password
       flash[:dark] = "Wrong password. Try it again."
