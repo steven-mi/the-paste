@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
     p request.GET[:password]
 
     if request.GET[:password] != @project.password
+      flash[:dark] = "Wrong password. Try it again."
       redirect_to root_path
     end
 
