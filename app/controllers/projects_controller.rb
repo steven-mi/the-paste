@@ -23,15 +23,13 @@ class ProjectsController < ApplicationController
   end
 
   def create
-   
-    if project_params[:password]==""
-      @project = Project.new( {title: project_params[:title],password: nil})
-    
-  else 
-    @project = Project.new(project_params)
-  end
+    if project_params[:password] == ""
+      @project = Project.new({title: project_params[:title], password: nil})
+    else
+      @project = Project.new(project_params)
+    end
     if @project.save
-      redirect_to @project
+      redirect_to controller: "projects", action: "show", id: @project, password: @project.password
     else
       render 'new'
     end
@@ -40,11 +38,21 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
 
-    if @project.update(project_params)
-      redirect_to @project
+    if project_params[:password] == ""
+
+      @project.update({title: project_params[:title], password: nil})
+
     else
-      render 'edit'
+      @project.update(project_params)
+
     end
+
+    if @project.save
+      redirect_to controller: "projects", action: "show", id: @project, password: @project.password
+    else
+      render 'new'
+    end
+
   end
 
   def destroy
@@ -57,8 +65,8 @@ class ProjectsController < ApplicationController
 
   def project_params
 
-      params.require(:project).permit(:title, :password)
-    
+    params.require(:project).permit(:title, :password)
+
   end
 
 end
