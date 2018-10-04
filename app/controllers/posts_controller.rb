@@ -20,7 +20,16 @@ class PostsController < ApplicationController
     end
   end
 
-  def new
+  def new  
+    @lg = [["html", "html"], 
+    ["python", "python hljs"],
+    ["bash", "hljs-meta"], 
+    ["cpp", "cpp hljs"], 
+    ["scala", "scala hljs"], 
+    ["java", "java hljs"], 
+    ["json", "json hljs"],
+    ["ruby", "ruby hljs"],
+    ]
     @post = @project.posts.build
     update_timestamp
   end
@@ -29,6 +38,7 @@ class PostsController < ApplicationController
     @project = Project.find(params[:project_id])
     update_timestamp
     @post = @project.posts.create(post_params)
+   
     redirect_to controller: "projects", action: "show", id: @project, password: @project.password
   end
 
