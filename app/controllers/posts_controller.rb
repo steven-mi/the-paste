@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @post = @project.posts.find(params[:id])
+
     respond_to do |format|
       format.html
       format.pdf do
@@ -21,16 +22,19 @@ class PostsController < ApplicationController
 
   def new
     @post = @project.posts.build
+    update_timestamp
   end
 
   def create
     @project = Project.find(params[:project_id])
+    update_timestamp
     @post = @project.posts.create(post_params)
-    redirect_to project_path(@project)
+    redirect_to controller: "projects", action: "show", id: @project, password: @project.password
   end
 
   def edit
     @post = @project.posts.find(params[:id])
+    update_timestamp
   end
 
   def update
@@ -47,12 +51,18 @@ class PostsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:project_id])
+    update_timestamp
     @post = @project.posts.find(params[:id])
     @post.destroy
     redirect_to project_path(@project)
   end
 
   private
+
+  def update_timestamp
+    Project.find(params[:project_id]).touch
+
+  end
 
   def post_params
     params.require(:post).permit(:title, :body, :syntax)
