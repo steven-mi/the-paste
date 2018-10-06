@@ -34,10 +34,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_template "users/edit"
   end
 
-  test "should get update" do
-    patch user_path(@user), params:{user: {:email => "test@web.de", :password => "benrocks"}}
-    assert_response :found
-    assert_not_equal @user.email, "test@web.de"
-  end
+  # test "should get update" do
+  #   patch user_path(@user), params:{:email => "test@web.de", :password => "benrocks"}
+  #   assert_response :found
+  #   assert_not_equal @user.email, "test@web.de"
+  # end
 
 end
