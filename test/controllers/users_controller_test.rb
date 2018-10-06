@@ -22,7 +22,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_path
   end
 
-
   test "should show user" do
     get user_path(@user)
     assert_response :success
@@ -33,6 +32,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get edit_user_path(@user)
     assert_response :success
     assert_template "users/edit"
+  end
+
+  test "should get update" do
+    patch user_path(@user), params:{user: {:email => "test@web.de", :password => "benrocks"}}
+    assert_response :found
+    assert_not_equal @user.email, "test@web.de"
   end
 
 end
