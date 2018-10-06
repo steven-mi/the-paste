@@ -37,11 +37,9 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_response :found
   end
 
-#  test "should not delete" do
- #   assert_difference "Project.count", 0 do
-  #    delete project_path(@project)
-  #  end
- # end
-
-
+  test "should not delete" do
+    assert_difference "Project.count", 0 do
+      delete project_path(@project)
+    end
+  end
 end
