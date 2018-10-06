@@ -9,4 +9,4 @@
 User.create(email: 'josh@example.com', password: 'passw0rd', password_confirmation: 'passw0rd')
 
 Project.create(title: 'public project')
-Project.create(title: 'private project(PW:1234)', password: '1234')
+Project.create(title: 'private project(PW:1234)', password: Rails.application.secrets.testing_project_password)
