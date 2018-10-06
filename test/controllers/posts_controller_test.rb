@@ -44,8 +44,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_equal current_time, update_time
   end
 
-  test "should get update" do
+  test "should not update" do
     patch project_post_path(@project, @post), params: {post: {title: "test", body: "testtest", syntax: "html"}}
+    assert_not_equal @post.title, "test"
     assert_response :found
   end
 
