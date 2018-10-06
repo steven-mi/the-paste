@@ -33,7 +33,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not update" do
     patch project_path(@project), params: {title: "test", password: "0000"}
-    assert_equal @project.title = 'Prometheus'
+    assert_not_equal @project.title, "test"
     assert_response :found
   end
 
