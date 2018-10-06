@@ -49,12 +49,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :found
   end
 
-  test "should get destroy" do
-    assert_difference "Post.count", -1 do
+  test "should not destroy" do
+    assert_difference "Post.count", 0  do
       delete project_post_path(@project, @post)
       assert_response :found
     end
-
     update_time = @project.updated_at.strftime("%Y-%m-%d %H:%M")
     current_time = DateTime.now.in_time_zone('UTC').strftime("%Y-%m-%d %H:%M")
     assert_equal current_time, update_time
