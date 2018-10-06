@@ -8,36 +8,40 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get projects_path
     assert_response :success
-    assert_template "projects/index"
   end
 
   test "should get show" do
     get project_path(@project)
     assert_response :success
-    assert_template "projects/show"
   end
 
   test "should get new" do
-    get new_project_path
-    assert_response :success
-    assert_template "projects/new"
+    get new_project_path(@project)
+    assert_response :found
   end
 
   test "should get edit" do
     get edit_project_path(@project)
-    assert_response :success
-    assert_template "projects/edit"
+    assert_response :found
   end
 
-  test "posting" do
-    assert_difference "Project.count", 1 do
-      post "/projects", params: { project: { title: "can create"} }
+  test "should not create" do
+    assert_difference "Project.count", 0 do
+      post projects_path, params: {project: {title: "testtest", body: "test"}}
     end
   end
 
-  test "destroy" do
-    assert_difference "Project.count", -1 do
-      delete project_path(@project)
-    end
+  test "should not update" do
+    patch project_path(@project), params: {title: "test", password: "0000"}
+    assert_equal @project.title = 'Prometheus'
+    assert_response :found
   end
+
+#  test "should not delete" do
+ #   assert_difference "Project.count", 0 do
+  #    delete project_path(@project)
+  #  end
+ # end
+
+
 end
