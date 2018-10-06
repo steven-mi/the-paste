@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.order('updated_at DESC')
+    @projects = Project.includes(:posts).order('posts.created_at DESC')
   end
 
   def show
