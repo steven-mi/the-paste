@@ -1,10 +1,17 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.all
+    @projects = Project.includes(:posts).order('posts.created_at DESC')
   end
 
   def show
+
     @project = Project.find(params[:id])
+
+    if request.GET[:password] != @project.password
+      flash[:dark] = "Wrong password. Try it again."
+      redirect_to root_path
+    end
+
   end
 
   def new
@@ -16,10 +23,13 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
-
+    if project_params[:password] == ""
+      @project = Project.new({title: project_params[:title], password: nil})
+    else
+      @project = Project.new(project_params)
+    end
     if @project.save
-      redirect_to @project
+      redirect_to controller: "projects", action: "show", id: @project, password: @project.password
     else
       render 'new'
     end
@@ -27,12 +37,22 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
- 
-    if @project.update(project_params)
-      redirect_to @project
+
+    if project_params[:password] == ""
+
+      @project.update({title: project_params[:title], password: nil})
+
     else
-      render 'edit'
+      @project.update(project_params)
+
     end
+
+    if @project.save
+      redirect_to controller: "projects", action: "show", id: @project, password: @project.password
+    else
+      render 'new'
+    end
+
   end
 
   def destroy
@@ -44,7 +64,9 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:title)
+
+    params.require(:project).permit(:title, :password)
+
   end
-  
+
 end

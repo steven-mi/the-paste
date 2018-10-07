@@ -7,7 +7,7 @@
     </div>
   <% else %>
     <button type="button" class="btn btn-warning btn-sm disabled" disabled>Create project</button>
-<% end %>
+  <% end %>
 </div>
 
 <br/>
@@ -22,14 +22,25 @@
         <thead>
         </thead>
         <tbody>
-        <% @projects.reverse_each do |project| %>
+        <% @projects.each do |project| %>
           <tr>
             <td>
               <%= link_to project_path(project) do %>
                 <%= project.title %>
+                <% if !project.password.nil? %> <span class="badge badge-secondary">Private</span>
+                <% end %>
               <% end %>
+
               <br/>
               <small class="text-muted">Last updated <%= project.updated_at %></small>
+              <% if !project.password.nil? %>
+                <%= form_tag(project_path(project), method: "get", :class => "form-group") do %>
+                  <div class="input-group input-group-sm mb-3">
+                    <%= password_field_tag :password, "", class: 'form-control form-control-sm', placeholder: 'Enter password' %>
+                    <div class="input-group-append"><%= submit_tag "Join", :class => "btn btn-outline-secondary" %></div>
+                  </div>
+                <% end %>
+              <% end %>
             </td>
           </tr>
         <% end %>
@@ -38,6 +49,3 @@
     </blockquote>
   </div>
 </div>
-
-
-

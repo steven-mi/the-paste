@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def show
     @post = @project.posts.find(params[:id])
+
     respond_to do |format|
       format.html
       format.pdf do
@@ -19,17 +20,37 @@ class PostsController < ApplicationController
     end
   end
 
-  def new
+  def new  
+    @available_languages = [["html", "html"], 
+    ["python", "python hljs"],
+    ["bash", "hljs-meta"], 
+    ["cpp", "cpp hljs"], 
+    ["scala", "scala hljs"], 
+    ["java", "java hljs"], 
+    ["json", "json hljs"],
+    ["ruby", "ruby hljs"],
+    ]
     @post = @project.posts.build
   end
 
   def create
     @project = Project.find(params[:project_id])
+    update_timestamp
     @post = @project.posts.create(post_params)
-    redirect_to project_path(@project)
+   
+    redirect_to controller: "projects", action: "show", id: @project, password: @project.password
   end
 
   def edit
+    @available_languages = [["html", "html"], 
+    ["python", "python hljs"],
+    ["bash", "hljs-meta"], 
+    ["cpp", "cpp hljs"], 
+    ["scala", "scala hljs"], 
+    ["java", "java hljs"], 
+    ["json", "json hljs"],
+    ["ruby", "ruby hljs"],
+    ]
     @post = @project.posts.find(params[:id])
   end
 
@@ -47,12 +68,18 @@ class PostsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:project_id])
+    update_timestamp
     @post = @project.posts.find(params[:id])
     @post.destroy
     redirect_to project_path(@project)
   end
 
   private
+
+  def update_timestamp
+    Project.find(params[:project_id]).touch
+
+  end
 
   def post_params
     params.require(:post).permit(:title, :body, :syntax)

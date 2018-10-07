@@ -1,2 +1,26 @@
-<h1>Projects#edit</h1>
-<p>Find me in app/views/projects/edit.html.erb</p>
+<% provide(:title, "Edit Project") %>
+
+<div class="card">
+  <div class="card-header">
+    Edit Project
+  </div>
+  <div class="card-body">
+    <%= form_for @project do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control', placeholder: "Title" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.text_field :password, class: 'form-control', placeholder: "Password" %>
+      </div>
+      <button type="submit" class="btn btn-primary">Edit</button>
+  <% end %>
+
+  </div>
+</div>
+<br>
+<%= link_to 'Back',  controller: "projects", action: "show", id: @project, password: @project.password %>
+
+
+

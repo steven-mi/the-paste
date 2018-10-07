@@ -1,6 +1,6 @@
 <% provide(:title, "New Post") %>
 
-  <div class="card">
+<div class="card">
     <div class="card-body">
         <%= form_for([@project, @post]) do |f| %>
             <div class="form-group">
@@ -9,15 +9,7 @@
             </div>
             <div class="form-group">
                 <%= f.label :syntax %><br>
-                <%= f.select :syntax, [["html", "html"], 
-                ["python", "python hljs"],
-                ["bash", "hljs-meta"], 
-                ["cpp", "cpp hljs"], 
-                ["scala", "scala hljs"], 
-                ["java", "java hljs"], 
-                ["json", "json hljs"],
-                ["ruby", "ruby hljs"],
-                ], {}, {class: "form-control form-control-sm"} %>
+                <%= f.select :syntax, @available_languages, {}, {class: "form-control form-control-sm"} %>
             </div>
             <div class="form-group">
                 <%= f.label :code %><br>
@@ -30,4 +22,5 @@
         </div>
     </div>
     <br/>
-    <%= link_to 'Back', project_path(@project) %>
+    
+<%= link_to 'Back',  controller: "projects", action: "show", id: @project, password: @project.password %>

@@ -8,6 +8,7 @@
         <span class="sr-only">Toggle Dropdown</span>
       </button>
       <div class="dropdown-menu">
+        <%= link_to 'Edit Project', edit_project_path(@project), class: 'dropdown-item' %></td>
         <%= link_to 'Delete Project', project_path(@project),
                     method: :delete,
                     data: {confirm: 'Are you sure?'}, class: 'dropdown-item' %>
