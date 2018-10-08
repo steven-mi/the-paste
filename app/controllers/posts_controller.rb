@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     ["ruby", "ruby hljs"],
     ]
     @post = @project.posts.build
-    update_timestamp
+    
   end
 
   def create
