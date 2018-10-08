@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   def index
+<<<<<<< HEAD
     if params[:filter]
       
       @projects = Project.where('title LIKE ?', "%#{params[:filter]}%").order('updated_at DESC')
@@ -10,6 +11,9 @@ class ProjectsController < ApplicationController
     else
       @projects = Project.order('updated_at DESC')
     end
+=======
+    @projects = Project.includes(:posts).order('posts.created_at DESC')
+>>>>>>> 08d41c328568f9e01c1523e3bb8f1f2c6cae1ee8
   end
 
   def show

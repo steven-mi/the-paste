@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def new  
-    @lg = [["html", "html"], 
+    @available_languages = [["html", "html"], 
     ["python", "python hljs"],
     ["bash", "hljs-meta"], 
     ["cpp", "cpp hljs"], 
@@ -31,7 +31,10 @@ class PostsController < ApplicationController
     ["ruby", "ruby hljs"],
     ]
     @post = @project.posts.build
+<<<<<<< HEAD
     
+=======
+>>>>>>> 08d41c328568f9e01c1523e3bb8f1f2c6cae1ee8
   end
 
   def create
@@ -43,8 +46,16 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @available_languages = [["html", "html"], 
+    ["python", "python hljs"],
+    ["bash", "hljs-meta"], 
+    ["cpp", "cpp hljs"], 
+    ["scala", "scala hljs"], 
+    ["java", "java hljs"], 
+    ["json", "json hljs"],
+    ["ruby", "ruby hljs"],
+    ]
     @post = @project.posts.find(params[:id])
-    update_timestamp
   end
 
   def update
