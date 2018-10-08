@@ -22,6 +22,6 @@
     </div>
 </div>
 <br/>
-<%= link_to 'Back', project_path(@project) %>
+<%= link_to 'Back',  controller: "projects", action: "show", id: @project, password: @project.password %>
 
 
