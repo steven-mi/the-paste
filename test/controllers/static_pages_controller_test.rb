@@ -10,6 +10,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+=begin
   test "should get home" do
     get home_path
     assert_response :success
@@ -23,5 +24,6 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_template 'static_pages/help'
     assert_select "title", "Help | #{@base_title}"
   end
+=end
 
 end

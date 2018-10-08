@@ -75,10 +75,8 @@ class PostsController < ApplicationController
   end
 
   private
-
   def update_timestamp
     Project.find(params[:project_id]).touch
-
   end
 
   def post_params

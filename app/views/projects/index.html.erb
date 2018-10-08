@@ -14,8 +14,13 @@
 
 <div class="card">
   <div class="card-header">
-    All Projects
+  <%= form_tag(projects_path(), method: "get", :class => "form-group") do %>
+    <div class="input-group input-group-sm mb-3">
+      <%= text_field_tag  :filter, "", class: 'form-control form-control-sm', placeholder: 'Filter Projects' %>
+      <div class="input-group-append"><%= submit_tag "Filter", :class => "btn btn-outline-secondary" %></div>
+    
   </div>
+  <% end %>
   <div class="card-body">
     <blockquote class="blockquote mb-0">
       <table class="table table-borderless table-hover">
