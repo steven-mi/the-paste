@@ -31,10 +31,6 @@ class PostsController < ApplicationController
     ["ruby", "ruby hljs"],
     ]
     @post = @project.posts.build
-<<<<<<< HEAD
-    
-=======
->>>>>>> 08d41c328568f9e01c1523e3bb8f1f2c6cae1ee8
   end
 
   def create
