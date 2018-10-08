@@ -71,7 +71,7 @@ class PostsController < ApplicationController
     update_timestamp
     @post = @project.posts.find(params[:id])
     @post.destroy
-    redirect_to project_path(@project)
+    redirect_to controller: "projects", action: "show", id: @project, password: @project.password
   end
 
   private
